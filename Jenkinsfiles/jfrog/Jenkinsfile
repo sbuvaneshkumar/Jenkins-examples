@@ -1,0 +1,27 @@
+node{
+    stage('create files') {
+        sh 'touch one two three'
+    }
+    
+    stage('upload to artifactory') {
+     def server = Artifactory.server 'pro'
+
+// pro == server ID of Jfrog artifactory (get it from Jenkins settings) 
+
+        def uploadSpec = """{
+            "files": [
+    {
+      "pattern": "three",
+      "target": "sample/"
+
+// sample == repository name in Jfrog artifactory 
+
+    }
+ ]
+}"""
+server.upload(uploadSpec)
+
+    }
+}
+
+
