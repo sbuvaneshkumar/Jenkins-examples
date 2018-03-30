@@ -13,12 +13,10 @@ node{
     {
       "pattern": "three",
       "target": "sample/"
-
-// sample == repository name in Jfrog artifactory 
-
     }
  ]
 }"""
+// sample == repository name in Jfrog artifactory 
 server.upload(uploadSpec)
 
     }
